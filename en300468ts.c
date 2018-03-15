@@ -2285,10 +2285,6 @@ int main(int argc, char *argv[])
 {
   int f = -1;
   int a;
-  if (sizeof(unsigned) != sizeof(struct loop_descr *)) {
-    fprintf(stderr, "data type prerequisites not met\n");
-    return 1;
-  }
   gen_crc32_table();
   system_init();
   unblockf(STDIN_FILENO);

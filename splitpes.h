@@ -19,7 +19,8 @@
  */
 
 
-int guess_streamtype (int streamid);
+int guess_streamtype (int streamid,
+    int streamtype);
 boolean pes_skip_to_prefix (file_descr *f);
 int pes_stream_id (refr_data *d);
 int pes_packet_length (refr_data *d);

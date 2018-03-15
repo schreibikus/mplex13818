@@ -929,12 +929,14 @@ static boolean split_autostreammatch (file_descr *f,
     i = pmt->streams;
     while (--i >= 0) {
       if (pmt->stream[i] == pid) {
+        warn (LINF,"Auto Streamtype",ETST,13,pmt->streamtype[i],pid);
         inpmt = TRUE;
         if (a == NULL) {
           warn (LIMP,"Auto T",ETST,13,sid,pmt->programnumber);
           ts_file_stream (f,pid) =
             connect_streamprog (f,pmt->programnumber,pid,
-              -sid,guess_streamtype(sid),
+              -sid,
+              guess_streamtype(sid,pmt->streamtype[i]),
               ts_file_stream (f,pid),
               ts_file_stream (f,pmt->pmt_pid),TRUE);
           match = TRUE;
@@ -946,7 +948,8 @@ static boolean split_autostreammatch (file_descr *f,
                 warn (LIMP,"Auto P",ETST,13,sid,a->tprg);
                 ts_file_stream (f,pid) =
                   connect_streamprog (f,a->tprg,pid,
-                    -sid,guess_streamtype(sid),
+                    -sid,
+                    guess_streamtype(sid,pmt->streamtype[i]),
                     ts_file_stream (f,pid),
                     ts_file_stream (f,pmt->pmt_pid),TRUE);
                 match = TRUE;
@@ -955,7 +958,9 @@ static boolean split_autostreammatch (file_descr *f,
                 warn (LIMP,"Auto S",ETST,13,a->tsid,a->tprg);
                 ts_file_stream (f,pid) =
                   connect_streamprog (f,a->tprg,pid,
-                    a->tsid,guess_streamtype(a->tsid<0?-a->tsid:a->tsid),
+                    a->tsid,
+                    guess_streamtype(a->tsid<0?-a->tsid:a->tsid,
+                      pmt->streamtype[i]),
                     ts_file_stream (f,pid),
                     ts_file_stream (f,pmt->pmt_pid),TRUE);
                 match = TRUE;
@@ -975,7 +980,8 @@ static boolean split_autostreammatch (file_descr *f,
     warn (LIMP,"Auto 0",ETST,9,a->tsid,a->tprg);
     ts_file_stream (f,pid) =
       connect_streamprog (f,a->tprg,pid,
-        a->tsid,guess_streamtype(a->tsid<0?-a->tsid:a->tsid),
+        a->tsid,
+        guess_streamtype(a->tsid<0?-a->tsid:a->tsid,-1),
         ts_file_stream (f,pid),
         ts_file_stream (f,0),TRUE);
     match = TRUE;

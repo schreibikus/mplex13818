@@ -2,7 +2,7 @@
 .\"
 .\" Copyright (C) GPL 2004..2008, Oskar Schirmer
 .\"
-.TH en300468ts 1 "2010-10-10" "1.1.7" "Multiplexer"
+.TH en300468ts 1 "2013-06-08" "1.1.8" "Multiplexer"
 .SH NAME
 en300468ts \- SI table generator (EN 300468) for transport streams
 .SH SYNOPSIS
@@ -107,7 +107,7 @@ Parts of a table may be repeated. The number of repeatitions
 is given first, then the contents of the loop is given as often
 as it was denoted first.
 .TP
-.B YYYY/MM/DD HH:MM:SS
+.B DATE-AND-TIME
 When date and time information is needed, this is given
 in exactly the following form: \fIYYYY/MM/DD\~HH:MM:SS\fR,
 19 characters, the slashes, colons and one blank exactly as given here,

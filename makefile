@@ -1,7 +1,7 @@
 #!/usr/bin/make
 # make iso 13818-1 stream multiplexer
 
-VERSION = 1.1.7
+VERSION = 1.1.8
 DATE = $(shell date +%Y-%m-%d)
 
 PREFIX ?= /usr/local

@@ -742,6 +742,7 @@ stream_descr *input_openstream (file_descr *f,
           s->sourceid = sourceid;
           s->stream_id = streamid;
           s->stream_type = streamtype;
+          warn (LINF,"Open Streamtype",EINP,5,3,streamtype);
           s->version = 0xFF;
           s->conticnt = 0;
           s->endaction = ENDSTR_WAIT;

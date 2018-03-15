@@ -519,7 +519,9 @@ static boolean command (void)
                 if (f != NULL) {
                   f->u.pes.stream =
                     connect_streamprog (
-                      f,tprg,0,tsid,guess_streamtype (tsid),f->u.pes.stream,
+                      f,tprg,0,tsid,
+                      guess_streamtype (tsid,-1),
+                      f->u.pes.stream,
                       NULL,TRUE);
                 } else {
                   r = FALSE;
@@ -574,7 +576,7 @@ static boolean command (void)
                   f->u.ps.stream[ssid] =
                     connect_streamprog (
                       f,tprg,ssid,tsid<0?-ssid:tsid,
-                      guess_streamtype (tsid<0?ssid:tsid),
+                      guess_streamtype (tsid<0?ssid:tsid,-1),
                       f->u.ps.stream[ssid],f->u.ps.stream[0],TRUE);
                 } else {
                   r = FALSE;

@@ -424,7 +424,7 @@ static boolean ps_data_stream (file_descr *f,
    && (f->automatic)) {
     f->u.ps.stream[sourceid] =
       connect_streamprog (f,f->auto_programnb,sourceid,-sourceid,
-          guess_streamtype(sourceid),NULL,f->u.ps.stream[0],FALSE);
+          guess_streamtype(sourceid,-1),NULL,f->u.ps.stream[0],FALSE);
   }
   s = f->u.ps.stream[sourceid];
   if (s != NULL) {

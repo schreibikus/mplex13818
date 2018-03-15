@@ -3,7 +3,7 @@
 .\" Copyright (C) GPL 2001, Convergence Integrated Media GmbH
 .\" Copyright (C) GPL 2004..2005, Oskar Schirmer
 .\"
-.TH iso13818ps 1 "2010-10-10" "1.1.7" "Multiplexer"
+.TH iso13818ps 1 "2013-06-08" "1.1.8" "Multiplexer"
 .SH NAME
 iso13818ps \- multiplexer for ISO 13818 program streams
 .SH SYNOPSIS
@@ -179,7 +179,7 @@ that do not belong to a specific stream,
 the \fIstream_id\fR is omitted, too.
 .TP
 \fB\-B\fR, \fB\-\-busy\fR [\fInum\fR]
-Set the busy flag to \fInum\fR (range 0..1, default is 1).
+Set the busy flag to \fInum\fR (range 0..1, default is 1, initial is 0).
 Whenever the program has no more data to handle and
 the busy flag is not set, it stops.
 .TP
@@ -450,4 +450,5 @@ is solely a descriptor coming from a source file.
 Oskar Schirmer (schirmer@scara.com).
 .br
 Thanks a lot for specific bug fixes and testing to:
-Miriam Busch.
+Miriam Busch,
+Torsten Lang.

@@ -38,15 +38,23 @@
 /* Guess a stream type.
  * Return: a stream type according to ISO 13818-1 table 2-29,  0 if none such
  */
-int guess_streamtype (int streamid)
+int guess_streamtype (int streamid, int streamtype)
 {
   if ((streamid >= PES_CODE_AUDIO)
    && (streamid < PES_CODE_AUDIO + PES_NUMB_AUDIO)) {
-    return (PES_STRTYP_AUDIO13818);
+    if (streamtype_isaudio(streamtype)) {
+      return (streamtype);
+    } else {
+      return (PES_STRTYP_AUDIO13818);
+    }
   }
   if ((streamid >= PES_CODE_VIDEO)
    && (streamid < PES_CODE_VIDEO + PES_NUMB_VIDEO)) {
-    return (PES_STRTYP_VIDEO13818);
+    if (streamtype_isvideo(streamtype)) {
+      return (streamtype);
+    } else {
+      return (PES_STRTYP_VIDEO13818);
+    }
   }
   switch (streamid) {
     case PES_CODE_PRIVATE1:
@@ -182,7 +190,7 @@ boolean split_pes (file_descr *f)
         if (f->u.pes.stream == NULL) {
           if (f->automatic) {
             f->u.pes.stream = connect_streamprog (f,f->auto_programnb,
-                p,-p,guess_streamtype(p),NULL,NULL,FALSE);
+                p,-p,guess_streamtype(p,-1),NULL,NULL,FALSE);
             if (f->u.pes.stream == NULL) {
               f->automatic = FALSE;
               return (FALSE);
